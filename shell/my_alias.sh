@@ -1,4 +1,4 @@
-# ???
+# Enable flow controll
 stty -ixon
 #
 # Activate syntax color for ls
