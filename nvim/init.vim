@@ -34,10 +34,14 @@ Plugin 'fatih/vim-go'
 " Rust
 Plugin 'rust-lang/rust.vim'
 "
+" Terraform
+Plugin 'hashivim/vim-terraform'
 " Some plugins
 Plugin 'universal-ctags/ctags'
 Plugin 'w0rp/ale'
 Plugin 'psf/black'
+Plugin 'APZelos/blamer.nvim'
+" Plugin 'jbgutierrez/vim-better-comments' https://github.com/neovim/neovim/issues/12304
 "
 call vundle#end()
 "
@@ -46,6 +50,9 @@ filetype plugin indent on
 "
 " ALE config
 let g:ale_completion_enabled = 1
+" blamer
+let g:blamer_enabled = 1
+let g:blamer_prefix = ' > '
 "
 " Ctags config
 set tags=./tags,.tags;
@@ -56,6 +63,11 @@ let g:deoplete#enable_at_startup = 1
 " vim-airline config
 let g:airline_powerline_fonts = 1
 let g:airline_theme = 'bubblegum'
+"
+let g:loaded_python_provider = 0
+let g:loaded_ruby_provider = 0
+let g:loaded_perl_provider = 0
+let g:loaded_node_provider = 0
 "
 " For material
 set termguicolors
@@ -105,11 +117,11 @@ inoremap <expr><C-k> pumvisible() ? "\<C-p>" : "\<Up>"
 nnoremap <Leader>f :Files<CR>
 "
 " Open nvim config
-nnoremap <leader>vrc  :tabnew $HOME/00-CONFIG/nvim/init.vim<CR>
+nnoremap <leader>vrc  :tabnew $HOME/.config/nvim/init.vim<CR>
 " Open ZSH config
-nnoremap <leader>zsh  :tabnew $HOME/00-CONFIG/shell/zshrc<CR>
+nnoremap <leader>zsh  :tabnew $HOME/perso/01-GIT/dotfiles/shell/zshrc<CR>
 " Open my_alias config
-nnoremap <leader>mal  :tabnew $HOME/00-CONFIG/shell/my_alias.sh<CR>
+nnoremap <leader>mal  :tabnew $HOME/perso/01-GIT/dotfiles/shell/my_alias.sh<CR>
 "
 " Generate ctags python
 nnoremap <leader>ct :silent ! ctags -R --languages=python--exclude=.git --exclude=.js --exclude=log -f .tags<cr>
