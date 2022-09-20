@@ -37,6 +37,8 @@ alias weather-paris="curl -4 wttr.in/paris"
 # Docker
 alias docker-clean-unused="docker system prune --volumes --all --force"
 #
+# Commit lint
+alias commitlint="$HOME/.tools/node_modules/commitlint/cli.js"
 # Git
 alias gs="git status"
 alias gc="git clone"
@@ -59,3 +61,7 @@ alias tmux="tmux -u"
 # pbcopy linux
 alias pbcopy='xclip -selection clipboard'
 alias pbpaste='xclip -selection clipboard -o'
+# openpvn3
+alias vpn-start="/usr/bin/openvpn3 session-start --config $HOME/work/laptop-hb_remi_gaiffe@hivebrite.openvpn.com_Paris.ovpn"
+alias vpn-status="/usr/bin/openvpn3 sessions-list"
+alias vpn-stop="/usr/bin/openvpn3 session-manage --disconnect --path $(openvpn3 sessions-list | grep Path | awk '{print $2}')"
