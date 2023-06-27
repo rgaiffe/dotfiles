@@ -49,7 +49,7 @@ alias ga="git add"
 alias gaa="git add --all"
 #
 # Curl JSON
-alias json="json_pp | $HOME/env/bin/pygmentize -l json"
+alias json="json_pp | ${HOME}/env/bin/pygmentize -l json"
 #
 # Python env
 alias dev-env=". env/bin/activate"
@@ -61,7 +61,9 @@ alias tmux="tmux -u"
 # pbcopy linux
 alias pbcopy='xclip -selection clipboard'
 alias pbpaste='xclip -selection clipboard -o'
-# openpvn3
-alias vpn-start="/usr/bin/openvpn3 session-start --config $HOME/work/laptop-hb_remi_gaiffe@hivebrite.openvpn.com_Paris.ovpn" # && sleep 15 && sudo $HOME/work/routes.sh"
-alias vpn-status="/usr/bin/openvpn3 sessions-list"
-alias vpn-stop="/usr/bin/openvpn3 session-manage --disconnect --path $(openvpn3 sessions-list | grep Path | awk '{print $2}')"
+if [ "$(hostname)" == "laptop-hb" ] ; then
+  # openpvn3
+  alias vpn-start="/usr/bin/openvpn3 session-start --config ${HOME}/work/laptop-hb_remi_gaiffe@hivebrite.openvpn.com_Paris.ovpn"
+  alias vpn-status="/usr/bin/openvpn3 sessions-list"
+  alias vpn-stop="/usr/bin/openvpn3 session-manage --disconnect --path $(openvpn3 sessions-list | grep Path | awk '{print $2}')"
+fi

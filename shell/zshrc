@@ -7,7 +7,7 @@ export ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="risto"
 #
 # Enable some plugins
-plugins=(git zsh-syntax-highlighting docker zsh-kubectl-prompt)
+plugins=(git zsh-syntax-highlighting docker zsh-kubectl-prompt zsh-autosuggestions)
 #
 # Disable auto update use $> omz update
 DISABLE_AUTO_UPDATE="true"
