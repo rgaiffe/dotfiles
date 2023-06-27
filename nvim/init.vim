@@ -41,6 +41,8 @@ Plugin 'universal-ctags/ctags'
 Plugin 'w0rp/ale'
 Plugin 'psf/black'
 Plugin 'APZelos/blamer.nvim'
+Plugin 'kdheepak/lazygit.nvim'
+Plugin 'numToStr/FTerm.nvim'
 " Plugin 'jbgutierrez/vim-better-comments' https://github.com/neovim/neovim/issues/12304
 "
 call vundle#end()
@@ -89,8 +91,10 @@ let g:rustfmt_autosave = 1
 syntax on
 set tabstop=2
 set shiftwidth=2
+set expandtab
 set autoindent
 set t_Co=256
+set number
 "
 " Map leader
 let mapleader=","
@@ -115,6 +119,7 @@ inoremap <expr><C-k> pumvisible() ? "\<C-p>" : "\<Up>"
 "
 " Fuzzy finder
 nnoremap <Leader>f :Files<CR>
+nnoremap <Leader>Ff :Ag<CR>
 "
 " Open nvim config
 nnoremap <leader>vrc  :tabnew $HOME/.config/nvim/init.vim<CR>

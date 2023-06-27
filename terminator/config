@@ -7,15 +7,15 @@
   paste = <Super>v
 [profiles]
   [[default]]
-    background_color = "#403e41"
-    cursor_color = "#fcfcfa"
-    cursor_color_fg = False
-    font = Monaco 12
-    foreground_color = "#fcfcfa"
+    allow_bold = False
+    background_color = "#282a36"
+    cursor_color = "#aaaaaa"
+    font = Monaco Bold 12
+    foreground_color = "#eff0ea"
     show_titlebar = False
     scrollbar_position = hidden
-    scrollback_lines = 1000
-    palette = "#403e41:#ff6188:#a9dc76:#ffd866:#fc9867:#ab9df2:#78dce8:#fcfcfa:#727072:#ff6188:#a9dc76:#ffd866:#fc9867:#ab9df2:#78dce8:#fcfcfa"
+    scrollback_lines = 5000
+    palette = "#073642:#ff5c57:#5af78e:#f3f99d:#57c7ff:#ff6ac1:#9aedfe:#f1f1f0:#686868:#ff5c57:#5af78e:#f3f99d:#57c7ff:#ff6ac1:#9aedfe:#eff0eb"
 [layouts]
   [[default]]
     [[[child1]]]
