@@ -1,5 +1,5 @@
 [global_config]
-  borderless = True
+  borderless = False
 [keybindings]
   split_horiz = <Super><Shift>d
   split_vert = <Super>d
