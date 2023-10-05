@@ -27,6 +27,9 @@ Plugin 'deoplete-plugins/deoplete-jedi'
 "
 " Nerdtree
 Plugin 'preservim/nerdtree'
+Plugin 'Xuyuanp/nerdtree-git-plugin'
+Plugin 'ryanoasis/vim-devicons'
+Plugin 'tiagofumo/vim-nerdtree-syntax-highlight'
 "
 " Go
 Plugin 'fatih/vim-go'
@@ -96,9 +99,19 @@ set expandtab
 set autoindent
 set t_Co=256
 set number
+set encoding=UTF-8
+set mouse=a
 "
 " Map leader
 let mapleader=","
+
+" Nerdree syntax highlight
+let g:WebDevIconsDisableDefaultFolderSymbolColorFromNERDTreeDir = 1
+let g:WebDevIconsDisableDefaultFileSymbolColorFromNERDTreeFile = 1
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * NERDTree | if argc() > 0 || exists("s:std_in") | wincmd p | endif
+" Exit Vim if NERDTree is the only window remaining in the only tab.
+autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
 "
 " Call black on save
 autocmd BufWritePost *.py silent! execute ':Black'
@@ -131,4 +144,29 @@ nnoremap <leader>mal  :tabnew $HOME/perso/01-GIT/dotfiles/shell/my_alias.sh<CR>
 "
 " Generate ctags python
 nnoremap <leader>ct :silent ! ctags -R --languages=python--exclude=.git --exclude=.js --exclude=log -f .tags<cr>
-
+" HB
+"   Generate hcl
+nnoremap <Leader>gh :!make generate-hcl
+"   Plan / Apply prod
+nnoremap <Leader>planeuprod :make -C $HOME/work/01-GIT/k8 plan ENV=prod REGION=europe-west1 PROJECT=euprod STACK=
+nnoremap <Leader>appeuprod :make -C $HOME/work/01-GIT/k8 apply ENV=prod REGION=europe-west1 PROJECT=euprod STACK=
+nnoremap <leader>planusprod :make -C $HOME/work/01-GIT/k8 plan ENV=prod REGION=us-central1 PROJECT=usprod STACK=
+nnoremap <leader>appusprod :make -C $HOME/work/01-GIT/k8 apply ENV=prod REGION=us-central1 PROJECT=usprod STACK=
+nnoremap <leader>planchprod :make -C $HOME/work/01-GIT/k8 plan ENV=prod REGION=europe-west6 PROJECT=chprod STACK=
+nnoremap <leader>appchprod :make -C $HOME/work/01-GIT/k8 apply ENV=prod REGION=europe-west6 PROJECT=chprod STACK=
+nnoremap <leader>planapac :make -C $HOME/work/01-GIT/k8 plan ENV=prod REGION=australia-southeast1 PROJECT=apacprod STACK=
+nnoremap <leader>appapac :make -C $HOME/work/01-GIT/k8 apply ENV=prod REGION=australia-southeast1 PROJECT=apacprod STACK=
+"   Plan / Apply sandbox
+nnoremap <Leader>planeusandbox :make -C $HOME/work/01-GIT/k8 plan ENV=prod REGION=europe-west1 PROJECT=eusandbox STACK=
+nnoremap <Leader>appeusandbox :make -C $HOME/work/01-GIT/k8 apply ENV=prod REGION=europe-west1 PROJECT=eusandbox STACK=
+nnoremap <leader>planussandbox :make -C $HOME/work/01-GIT/k8 plan ENV=prod REGION=us-central1 PROJECT=ussandbox STACK=
+nnoremap <leader>appussandbox :make -C $HOME/work/01-GIT/k8 apply ENV=prod REGION=us-central1 PROJECT=ussandbox STACK=
+"   Plan / Apply hprod
+nnoremap <Leader>planwip :make -C $HOME/work/01-GIT/k8 plan ENV=hprod REGION=europe-west1 PROJECT=wip STACK=
+nnoremap <Leader>appwip :make -C $HOME/work/01-GIT/k8 apply ENV=hprod REGION=europe-west1 PROJECT=wip STACK=
+nnoremap <Leader>planbarney :make -C $HOME/work/01-GIT/k8 plan ENV=hprod REGION=europe-west1 PROJECT=barney STACK=
+nnoremap <Leader>appbarney :make -C $HOME/work/01-GIT/k8 apply ENV=hprod REGION=europe-west1 PROJECT=barney STACK=
+nnoremap <Leader>planstaging :make -C $HOME/work/01-GIT/k8 plan ENV=hprod REGION=europe-west1 PROJECT=staging STACK=
+nnoremap <Leader>appstaging :make -C $HOME/work/01-GIT/k8 apply ENV=hprod REGION=europe-west1 PROJECT=staging STACK=
+nnoremap <Leader>planinteg :make -C $HOME/work/01-GIT/k8 plan ENV=hprod REGION=europe-west1 PROJECT=integration STACK=
+nnoremap <Leader>appinteg :make -C $HOME/work/01-GIT/k8 apply ENV=hprod REGION=europe-west1 PROJECT=integration STACK=
