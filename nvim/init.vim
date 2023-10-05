@@ -47,6 +47,7 @@ Plugin 'APZelos/blamer.nvim'
 Plugin 'kdheepak/lazygit.nvim'
 Plugin 'numToStr/FTerm.nvim'
 Plugin 'github/copilot.vim'
+Plugin 'mhinz/vim-signify'
 " Plugin 'jbgutierrez/vim-better-comments' https://github.com/neovim/neovim/issues/12304
 "
 call vundle#end()
