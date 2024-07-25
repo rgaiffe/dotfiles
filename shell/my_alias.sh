@@ -59,8 +59,8 @@ alias test-env=". envtest/bin/activate"
 alias tmux="tmux -u"
 #
 # pbcopy linux
-alias pbcopy='xclip -selection clipboard'
-alias pbpaste='xclip -selection clipboard -o'
+#alias pbcopy='xclip -selection clipboard'
+#alias pbpaste='xclip -selection clipboard -o'
 if [ "$(hostname)" = "laptop-hb" ] ; then
   # openpvn3
   alias vpn-start="/usr/bin/openvpn3 session-start --config ${HOME}/work/laptop-hb_remi_gaiffe@hivebrite.openvpn.com_Paris.ovpn"

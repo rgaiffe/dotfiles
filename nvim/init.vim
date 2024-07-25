@@ -13,8 +13,6 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'kaicataldo/material.vim'
 "
 " Status bar
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
 Plugin 'tpope/vim-fugitive'
 "
 " Fuzzy finder
@@ -37,6 +35,9 @@ Plugin 'fatih/vim-go'
 " Rust
 Plugin 'rust-lang/rust.vim'
 "
+" Telescope
+Plugin 'nvim-telescope/telescope.nvim'
+Plugin 'nvim-lua/plenary.nvim'
 " Terraform
 Plugin 'hashivim/vim-terraform'
 " Some plugins
@@ -48,6 +49,8 @@ Plugin 'kdheepak/lazygit.nvim'
 Plugin 'numToStr/FTerm.nvim'
 Plugin 'github/copilot.vim'
 Plugin 'mhinz/vim-signify'
+Plugin 'nvim-treesitter/nvim-treesitter'
+Plugin 'catppuccin/nvim'
 " Plugin 'jbgutierrez/vim-better-comments' https://github.com/neovim/neovim/issues/12304
 "
 call vundle#end()
@@ -67,10 +70,6 @@ set tags=./tags,.tags;
 " Deoplete config
 let g:deoplete#enable_at_startup = 1
 "
-" vim-airline config
-let g:airline_powerline_fonts = 1
-let g:airline_theme = 'bubblegum'
-"
 let g:loaded_python_provider = 0
 let g:loaded_ruby_provider = 0
 let g:loaded_perl_provider = 0
@@ -80,8 +79,8 @@ let g:loaded_node_provider = 0
 set termguicolors
 let g:material_terminal_italics = 1
 let g:material_theme_style = 'darker'
-let g:lightline = { 'colorscheme': 'material_vim' }
-colorscheme material
+let g:lightline = { 'colorscheme': 'catppuccin_mocha' }
+colorscheme catppuccin
 "
 " fzf config
 " let g:fzf_layout = { 'left': '~20%' }
@@ -91,6 +90,10 @@ let g:fzf_action = { 'T': 'tab split', 'S': 'split', 'V': 'vsplit'}
 " Note: This feature requires webapi-vim to be installed.
 " let g:rust_clip_command = 'xclip -selection clipboard'
 let g:rustfmt_autosave = 1
+"
+" Icons
+let g:webdevicons_enable = 1
+let g:webdevicons_enable_nerdtree = 1
 "
 " Some options
 syntax on
@@ -145,6 +148,8 @@ nnoremap <leader>mal  :tabnew $HOME/perso/01-GIT/dotfiles/shell/my_alias.sh<CR>
 "
 " Generate ctags python
 nnoremap <leader>ct :silent ! ctags -R --languages=python--exclude=.git --exclude=.js --exclude=log -f .tags<cr>
+" Telescope
+nnoremap <leader>gf :lua require('telescope.builtin').live_grep({ cwd = vim.fn.expand('%:p:h') })<CR>
 " HB
 "   Generate hcl
 nnoremap <Leader>gh :!make generate-hcl
