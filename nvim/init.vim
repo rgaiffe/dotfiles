@@ -51,6 +51,7 @@ Plugin 'github/copilot.vim'
 Plugin 'mhinz/vim-signify'
 Plugin 'nvim-treesitter/nvim-treesitter'
 Plugin 'catppuccin/nvim'
+Plugin 'mhinz/vim-startify'
 " Plugin 'jbgutierrez/vim-better-comments' https://github.com/neovim/neovim/issues/12304
 "
 call vundle#end()
@@ -108,12 +109,14 @@ set mouse=a
 "
 " Map leader
 let mapleader=","
-
+"
+" Nerdtree Startify bookmarks
+let g:startify_bookmarks = systemlist("cut -sd' ' -f 2- ~/.NERDTreeBookmarks")
 " Nerdree syntax highlight
 let g:WebDevIconsDisableDefaultFolderSymbolColorFromNERDTreeDir = 1
 let g:WebDevIconsDisableDefaultFileSymbolColorFromNERDTreeFile = 1
 autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * NERDTree | if argc() > 0 || exists("s:std_in") | wincmd p | endif
+" autocmd VimEnter * NERDTree | if argc() > 0 || exists("s:std_in") | wincmd p | endif
 " Exit Vim if NERDTree is the only window remaining in the only tab.
 autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
 "
@@ -146,6 +149,8 @@ nnoremap <leader>zsh  :tabnew $HOME/perso/01-GIT/dotfiles/shell/zshrc<CR>
 " Open my_alias config
 nnoremap <leader>mal  :tabnew $HOME/perso/01-GIT/dotfiles/shell/my_alias.sh<CR>
 "
+" Reopen last file
+nnoremap <leader>r :Startify<CR>
 " Generate ctags python
 nnoremap <leader>ct :silent ! ctags -R --languages=python--exclude=.git --exclude=.js --exclude=log -f .tags<cr>
 " Telescope
